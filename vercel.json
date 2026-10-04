@@ -1,17 +1,12 @@
 {
-  "version": 2,
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": "/api/index.js"
     },
     {
-      "source": "/images/(.*)",
-      "destination": "/frontend/images/$1"
-    },
-    {
-      "source": "/(.*\\.(js|css|html|ico|png|jpg|jpeg|svg|webp|woff2|woff|ttf))",
-      "destination": "/frontend/$1"
+      "source": "/images/:path*",
+      "destination": "/frontend/images/:path*"
     },
     {
       "source": "/login",
@@ -22,8 +17,12 @@
       "destination": "/frontend/register.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/",
       "destination": "/frontend/index.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/frontend/:path*"
     }
   ]
 }
