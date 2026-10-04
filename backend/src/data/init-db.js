@@ -43,17 +43,6 @@ async function run() {
 
     await connection.changeUser({ database });
 
-    // Seed default demo user
-    const [existing] = await connection.query("SELECT id FROM users WHERE email = ? LIMIT 1", ["aman@example.com"]);
-    if (existing.length === 0) {
-      const demoHash = await bcrypt.hash("password123", 10);
-      await connection.query(
-        "INSERT INTO users (id, name, email, password_hash, phone, role) VALUES (?, ?, ?, ?, ?, ?)",
-        [uuidv4(), "Aman Sharma", "aman@example.com", demoHash, "9876543210", "customer"]
-      );
-      console.log("👤 Created demo customer: aman@example.com (password: password123)");
-    }
-
     // Seed restaurants
     for (const r of INITIAL_RESTAURANTS) {
       await connection.query(

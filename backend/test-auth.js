@@ -87,15 +87,15 @@ async function runTests() {
     assert(health.body.status === "ok", "Service status is ok");
     assert(health.body.database && health.body.database.mode, `Database active mode: ${health.body.database?.mode}`);
 
-    // 2. Demo User Login
-    console.log("\n🔹 2. Seeded Demo User Login");
-    const demoLogin = await mockRequest("POST", "/api/auth/login", {
-      email: "aman@example.com",
+    // 2. Unregistered User Login Protection
+    console.log("\n🔹 2. Unregistered User Login Protection");
+    const unknownLogin = await mockRequest("POST", "/api/auth/login", {
+      email: "unknown.user@example.com",
       password: "password123"
     });
-    assert(demoLogin.status === 200, "Demo user can log in with status 200");
-    assert(!!demoLogin.body.token, "JWT token returned for demo user");
-    assert(demoLogin.body.user && demoLogin.body.user.email === "aman@example.com", "Correct demo user profile returned");
+    assert(unknownLogin.status === 401, "Unregistered user login rejected with 401 Unauthorized");
+    assert(!!unknownLogin.body.error, "Error message returned for non-existent account");
+    assert(!unknownLogin.body.token, "No token issued for unregistered account");
 
     // 3. User Registration Validations
     console.log("\n🔹 3. User Registration Validation Checks");

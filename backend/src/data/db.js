@@ -20,18 +20,7 @@ let isMySql = false;
 
 // In-Memory tables used as resilient fallback when MySQL connection is unavailable
 const memoryDb = {
-  users: [
-    {
-      id: "demo-user-aman",
-      name: "Aman Sharma",
-      email: "aman@example.com",
-      passwordHash: bcrypt.hashSync("password123", 10),
-      phone: "9876543210",
-      role: "customer",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    }
-  ],
+  users: [],
   carts: new Map(),
   cart_lines: [],
   orders: [],

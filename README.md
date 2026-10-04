@@ -246,12 +246,6 @@ npm start
 - **Register**: [http://localhost:4000/register.html](http://localhost:4000/register.html)
 - **API Health**: [http://localhost:4000/api/health](http://localhost:4000/api/health)
 
-### Demo Credentials
-For testing convenience, the database comes pre-seeded with a demo customer:
-- **Email**: `aman@example.com`
-- **Password**: `password123`
-*(A 1-click **"Fill Demo"** button is also available on the Login page!)*
-
 ---
 
 ## 8. Automated Testing
@@ -259,13 +253,12 @@ For testing convenience, the database comes pre-seeded with a demo customer:
 The project includes an in-process automated test suite covering all authentication workflows, input validation rules, duplicate detection, JWT verification, profile updates, and authenticated order placement:
 
 ```bash
-cd backend
-npm run test:auth
+npm test
 ```
 
 **Test Suite Coverage (30/30 Passing Tests)**:
 - [x] Health check & DB mode verification
-- [x] Seeded demo user login
+- [x] Unregistered user login rejection (401)
 - [x] Short password rejection (< 6 chars -> 400)
 - [x] Invalid email format rejection (400)
 - [x] Empty name rejection (400)

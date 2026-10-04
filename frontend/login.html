@@ -41,16 +41,6 @@
     </div>
 
     <div class="tt-auth-body-inner">
-      <!-- Demo Credentials Helper -->
-      <div class="tt-demo-box">
-        <div class="tt-demo-box-text">
-          <strong>Demo account:</strong> aman@example.com / password123
-        </div>
-        <button type="button" class="tt-demo-fill-btn" id="demoFillBtn">
-          <i class="bi bi-lightning-charge-fill"></i> Fill Demo
-        </button>
-      </div>
-
       <!-- Live Alert Box -->
       <div id="alertBox" class="alert d-none tt-auth-alert" role="alert">
         <span id="alertIcon"></span>
@@ -149,7 +139,6 @@
   const alertBox = document.getElementById("alertBox");
   const alertIcon = document.getElementById("alertIcon");
   const alertMessage = document.getElementById("alertMessage");
-  const demoFillBtn = document.getElementById("demoFillBtn");
 
   // Check if already logged in
   const existingToken = localStorage.getItem("tt_auth_token");
@@ -173,15 +162,6 @@
       passInput.type = "password";
       togglePassIcon.classList.replace("bi-eye-slash", "bi-eye");
     }
-  });
-
-  // Demo Autofill Button
-  demoFillBtn.addEventListener("click", () => {
-    emailInput.value = "aman@example.com";
-    passInput.value = "password123";
-    emailInput.classList.remove("is-invalid");
-    passInput.classList.remove("is-invalid");
-    showAlert("Demo credentials loaded! Click Sign In.", "info");
   });
 
   // Forgot password modal
