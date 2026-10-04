@@ -1,28 +1,17 @@
 {
+  "outputDirectory": "public",
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "/api/index.js"
     },
     {
-      "source": "/images/:path*",
-      "destination": "/frontend/images/:path*"
-    },
-    {
       "source": "/login",
-      "destination": "/frontend/login.html"
+      "destination": "/login.html"
     },
     {
       "source": "/register",
-      "destination": "/frontend/register.html"
-    },
-    {
-      "source": "/",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/frontend/:path*"
+      "destination": "/register.html"
     }
   ]
 }

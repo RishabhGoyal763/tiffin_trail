@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/src/server.js",
     "dev": "node --watch backend/src/server.js",
-    "build": "echo 'Build complete'",
+    "build": "mkdir -p public && cp -r frontend/* public/",
     "test": "npm run test:auth",
     "test:auth": "cd backend && npm run test:auth"
   },

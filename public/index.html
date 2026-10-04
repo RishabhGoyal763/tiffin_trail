@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiffin Trail — Fresh Dabbas, Delivered Hot</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Custom -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg navbar-dark tt-navbar sticky-top">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand tt-brand" href="#home">
+      <span class="tt-brand-mark">🍱</span> Tiffin<span class="tt-brand-accent">Trail</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ttNav" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="ttNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#restaurants">Restaurants</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#offers">Offers</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <form class="d-flex tt-search-form mb-3 mb-lg-0 me-lg-3" role="search" id="navSearchForm">
+        <span class="tt-search-icon"><i class="bi bi-search"></i></span>
+        <input class="form-control tt-search-input" type="search" id="navSearchInput"
+               placeholder="Search dishes, e.g. 'paneer'" aria-label="Search">
+      </form>
+
+      <!-- Auth Navigation Section (injected dynamically: Sign In / Register OR User dropdown) -->
+      <div id="navAuthSection" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-3"></div>
+
+      <button class="btn tt-cart-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
+        <i class="bi bi-receipt"></i> My Order
+        <span class="badge tt-cart-badge" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="home" class="tt-hero">
+  <div class="tt-hero-top-bg">
+    <div class="container position-relative">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-6 text-start">
+          <p class="tt-eyebrow">Kharar &amp; nearby · delivering since noon</p>
+          <h1 class="tt-hero-title">Your favourite<br><span>dabba</span>, delivered hot.</h1>
+          <p class="tt-hero-sub">From street-side chaat to a full home-style thali — order from the kitchens your neighbourhood already trusts, tracked chit to doorstep.</p>
+        </div>
+
+        <div class="col-lg-6 text-center position-relative">
+          <div class="tt-chit-wrapper mx-auto">
+            <div class="tt-chit-hero">
+              <div class="tt-chit-hole"></div>
+              <div class="tt-chit-header">
+                <span>ORDER CHIT</span>
+                <span>#0417</span>
+              </div>
+              <div class="tt-chit-line"><span>2 × Butter Chicken</span><span>₹520</span></div>
+              <div class="tt-chit-line"><span>1 × Garlic Naan</span><span>₹60</span></div>
+              <div class="tt-chit-line"><span>1 × Gulab Jamun</span><span>₹90</span></div>
+              <div class="tt-chit-divider"></div>
+              <div class="tt-chit-line tt-chit-total"><span>TOTAL</span><span>₹670</span></div>
+              <div class="tt-chit-stamp">HOT &amp; ON THE WAY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tt-hero-zigzag"></div>
+  </div>
+
+  <div class="tt-hero-bottom-bar">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-lg-7 text-start">
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <a href="#menu" class="btn tt-btn-primary btn-lg">See the Menu</a>
+            <a href="#restaurants" class="btn tt-btn-outline-dark btn-lg">Browse Restaurants</a>
+          </div>
+          <div class="tt-hero-stats-inline d-flex flex-wrap align-items-center gap-4 mt-4">
+            <div class="tt-stat-item">
+              <span class="tt-stat-val">120+</span>
+              <span class="tt-stat-lbl">Kitchens</span>
+            </div>
+            <div class="tt-stat-item">
+              <span class="tt-stat-val">28 min</span>
+              <span class="tt-stat-lbl">Avg. delivery</span>
+            </div>
+            <div class="tt-stat-item">
+              <span class="tt-stat-val">4.6★</span>
+              <span class="tt-stat-lbl">Avg. rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OFFERS ============ -->
+<section id="offers" class="tt-section">
+  <div class="container">
+    <div class="tt-section-head">
+      <p class="tt-eyebrow">Today's deals</p>
+      <h2 class="tt-section-title">Offers worth the detour</h2>
+    </div>
+
+    <div id="offersCarousel" class="carousel slide tt-carousel" data-bs-ride="carousel">
+      <div class="carousel-indicators" id="offersIndicators"></div>
+      <div class="carousel-inner" id="offersInner"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#offersCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#offersCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESTAURANTS ============ -->
+<section id="restaurants" class="tt-section tt-section-alt">
+  <div class="container">
+    <div class="tt-section-head">
+      <p class="tt-eyebrow">Nearby Kitchens</p>
+      <h2 class="tt-section-title">Restaurants on the trail</h2>
+      <p class="tt-section-sub">Order from trusted neighborhood kitchens. Select a restaurant to view its items.</p>
+    </div>
+    <div class="row g-4" id="restaurantGrid"><!-- injected by JS --></div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section id="menu" class="tt-section">
+  <div class="container">
+    <div class="tt-section-head">
+      <p class="tt-eyebrow">Explore Dishes</p>
+      <h2 class="tt-section-title">Full Menu</h2>
+      <p class="tt-section-sub">Filter by diet, cuisine, or max price to build your order chit.</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="tt-filter-bar">
+      <div class="row g-3 align-items-end">
+        <div class="col-6 col-md-3">
+          <label class="tt-filter-label">Diet</label>
+          <div class="btn-group w-100 tt-diet-toggle" role="group" aria-label="Diet filter">
+            <input type="radio" class="btn-check" name="dietFilter" id="dietAll" value="all" checked>
+            <label class="btn" for="dietAll">All</label>
+            <input type="radio" class="btn-check" name="dietFilter" id="dietVeg" value="veg">
+            <label class="btn" for="dietVeg"><span class="tt-veg-dot"></span> Veg</label>
+            <input type="radio" class="btn-check" name="dietFilter" id="dietNonveg" value="nonveg">
+            <label class="btn" for="dietNonveg"><span class="tt-nonveg-dot"></span> Non-Veg</label>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+          <label class="tt-filter-label" for="cuisineFilter">Cuisine</label>
+          <select class="form-select tt-select" id="cuisineFilter">
+            <option value="all">All cuisines</option>
+          </select>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <label class="tt-filter-label" for="priceFilter">Max price: <span id="priceValue">₹500</span></label>
+          <input type="range" class="form-range tt-range" min="50" max="500" step="10" value="500" id="priceFilter">
+        </div>
+
+        <div class="col-12 col-md-2">
+          <button class="btn tt-btn-outline w-100" id="resetFilters"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="tt-result-count mt-3 mb-0" id="resultCount"></p>
+
+    <div class="row g-4 mt-1" id="menuGrid"><!-- injected by JS --></div>
+    <p class="tt-empty-state d-none" id="emptyState">No dishes match those filters — try widening the price range or diet.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="tt-section tt-section-dark">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <p class="tt-eyebrow tt-eyebrow-light">Get in touch</p>
+        <h2 class="tt-section-title tt-title-light">Questions about an order?</h2>
+        <p class="tt-hero-sub tt-text-light">Our support desk is open 10am–11pm, every day. For anything
+          urgent about a live delivery, calling is fastest.</p>
+        <ul class="tt-contact-list">
+          <li><i class="bi bi-telephone"></i> +91 98765 56789</li>
+          <li><i class="bi bi-envelope"></i> help@tiffintrail.in</li>
+          <li><i class="bi bi-geo-alt"></i> Kharar, Punjab, India</li>
+        </ul>
+      </div>
+      <div class="col-lg-7">
+        <form class="tt-contact-form" id="contactForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="tt-filter-label tt-label-light" for="cName">Name</label>
+              <input type="text" class="form-control tt-input-dark" id="cName" placeholder="Your full name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="tt-filter-label tt-label-light" for="cEmail">Email</label>
+              <input type="email" class="form-control tt-input-dark" id="cEmail" placeholder="your.email@example.com" required>
+            </div>
+            <div class="col-12">
+              <label class="tt-filter-label tt-label-light" for="cMessage">Message</label>
+              <textarea class="form-control tt-input-dark" id="cMessage" rows="4" placeholder="How can we help with your order?" required></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn tt-btn-primary">Send message</button>
+              <span class="ms-3 tt-form-status d-none" id="contactStatus">Message sent — we'll reply soon.</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ CART OFFCANVAS (signature "order chit") ============ -->
+<div class="offcanvas offcanvas-end tt-cart-offcanvas" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartOffcanvasLabel"><i class="bi bi-receipt"></i> Order Chit</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="cartItems" class="tt-cart-items flex-grow-1"><!-- injected by JS --></div>
+
+    <div class="tt-cart-summary">
+      <div class="tt-chit-line"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+      <div class="tt-chit-line"><span>Delivery fee</span><span id="cartDelivery">₹0</span></div>
+      <div class="tt-chit-line"><span>Taxes (5%)</span><span id="cartTax">₹0</span></div>
+      <div class="tt-chit-divider"></div>
+      <div class="tt-chit-line tt-chit-total"><span>TOTAL</span><span id="cartTotal">₹0</span></div>
+      <button class="btn tt-btn-primary w-100 mt-3" id="checkoutBtn">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ITEM DETAIL MODAL ============ -->
+<div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content tt-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="itemModalLabel">Item name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="itemModalBody"><!-- injected by JS --></div>
+      <div class="modal-footer">
+        <div class="tt-modal-qty">
+          <button class="btn tt-qty-btn" id="modalQtyMinus">−</button>
+          <span id="modalQtyValue">1</span>
+          <button class="btn tt-qty-btn" id="modalQtyPlus">+</button>
+        </div>
+        <button type="button" class="btn tt-btn-primary" id="modalAddBtn">Add to order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHECKOUT MODAL ============ -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content tt-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkoutModalLabel"><i class="bi bi-geo-alt-fill text-warning me-2"></i>Confirm Delivery Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="orderConfirmForm">
+        <div class="modal-body">
+          <div class="alert alert-info py-2 mb-3" style="font-size: 0.85rem;" id="checkoutAuthAlert">
+            <i class="bi bi-info-circle-fill me-1"></i> Quick delivery to your doorstep.
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="orderCustName" style="font-size: 0.85rem;">Your Name</label>
+            <input type="text" class="form-control" id="orderCustName" placeholder="Full name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="orderCustPhone" style="font-size: 0.85rem;">Phone Number</label>
+            <input type="tel" class="form-control" id="orderCustPhone" placeholder="10-digit mobile number" required pattern="\d{10}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="orderCustAddress" style="font-size: 0.85rem;">Delivery Address</label>
+            <textarea class="form-control" id="orderCustAddress" rows="2" placeholder="House/Flat No., Street, Landmark, City" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" style="font-size: 0.85rem;">Payment Method</label>
+            <select class="form-select" id="orderPaymentMethod">
+              <option value="cash_on_delivery" selected>💵 Cash on Delivery (COD)</option>
+              <option value="upi">📱 UPI / QR on Handover</option>
+              <option value="card">💳 Card on Delivery</option>
+            </select>
+          </div>
+          <div class="p-2 bg-light rounded text-end fw-bold" style="font-family: var(--font-mono); font-size: 0.95rem;">
+            Payable Amount: <span id="checkoutModalTotal" class="text-danger">₹0</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn tt-btn-primary btn-sm" id="confirmOrderBtn">
+            <span class="spinner-border spinner-border-sm me-1 d-none" id="orderSpinner"></span>
+            Confirm &amp; Place Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PAST ORDERS MODAL ============ -->
+<div class="modal fade" id="ordersModal" tabindex="-1" aria-labelledby="ordersModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-content tt-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ordersModalLabel"><i class="bi bi-receipt text-warning me-2"></i>My Order Chits</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="ordersModalBody">
+        <div class="text-center py-4 text-muted">
+          <div class="spinner-border spinner-border-sm mb-2" role="status"></div>
+          <div>Loading your order chits...</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ USER PROFILE MODAL ============ -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content tt-modal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel"><i class="bi bi-person-circle text-warning me-2"></i>My Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form id="profileForm">
+        <div class="modal-body">
+          <div id="profileAlert" class="alert d-none py-2" style="font-size: 0.85rem;"></div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" style="font-size: 0.85rem;">Email Address</label>
+            <input type="email" class="form-control bg-light" id="profEmail" readonly disabled>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="profName" style="font-size: 0.85rem;">Full Name</label>
+            <input type="text" class="form-control" id="profName" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold" for="profPhone" style="font-size: 0.85rem;">Phone Number</label>
+            <input type="tel" class="form-control" id="profPhone" placeholder="10-digit mobile">
+          </div>
+          <div class="text-muted" style="font-size: 0.8rem;">
+            Account Type: <span class="badge bg-secondary" id="profRole">Customer</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn tt-btn-primary btn-sm" id="saveProfileBtn">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="ttToast" class="toast tt-toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body" id="ttToastBody">Added to your chit.</div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
