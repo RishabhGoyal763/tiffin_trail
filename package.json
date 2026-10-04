@@ -1,0 +1,24 @@
+{
+  "name": "tiffin-trail",
+  "version": "1.0.0",
+  "description": "Authentic food delivery platform with MySQL + MongoDB polyglot persistence",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js",
+    "build": "echo 'Build complete'",
+    "test": "npm run test:auth",
+    "test:auth": "cd backend && npm run test:auth"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.7.0",
+    "mysql2": "^3.24.5",
+    "uuid": "^9.0.1"
+  }
+}

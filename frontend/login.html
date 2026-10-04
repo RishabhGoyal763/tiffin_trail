@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — Tiffin Trail</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Custom Style -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="tt-auth-body">
+
+<!-- Simple Auth Navbar -->
+<nav class="navbar navbar-dark tt-auth-navbar">
+  <div class="container px-3 px-lg-4">
+    <a class="navbar-brand tt-brand" href="index.html">
+      <span class="tt-brand-mark">🍱</span> Tiffin<span class="tt-brand-accent">Trail</span>
+    </a>
+    <a href="index.html" class="btn btn-outline-light btn-sm rounded-pill px-3">
+      <i class="bi bi-arrow-left"></i> Back to Menu
+    </a>
+  </div>
+</nav>
+
+<!-- Main Auth Container -->
+<div class="tt-auth-wrapper">
+  <div class="tt-auth-card">
+    <div class="tt-auth-header">
+      <div class="tt-auth-badge">
+        <i class="bi bi-box-arrow-in-right"></i>
+      </div>
+      <h1 class="tt-auth-title">Welcome Back</h1>
+      <p class="tt-auth-subtitle">Sign in to track orders, manage your chit &amp; reorder fast.</p>
+    </div>
+
+    <div class="tt-auth-body-inner">
+      <!-- Demo Credentials Helper -->
+      <div class="tt-demo-box">
+        <div class="tt-demo-box-text">
+          <strong>Demo account:</strong> aman@example.com / password123
+        </div>
+        <button type="button" class="tt-demo-fill-btn" id="demoFillBtn">
+          <i class="bi bi-lightning-charge-fill"></i> Fill Demo
+        </button>
+      </div>
+
+      <!-- Live Alert Box -->
+      <div id="alertBox" class="alert d-none tt-auth-alert" role="alert">
+        <span id="alertIcon"></span>
+        <div id="alertMessage" class="flex-grow-1"></div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" novalidate>
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="loginEmail" class="tt-form-label">Email address</label>
+          <div class="tt-input-group">
+            <span class="tt-input-icon"><i class="bi bi-envelope"></i></span>
+            <input type="email" class="form-control tt-auth-input" id="loginEmail" placeholder="name@example.com" required autocomplete="email">
+          </div>
+          <div class="invalid-feedback" id="emailFeedback">Please enter a valid email address.</div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <div class="tt-form-label">
+            <span>Password</span>
+            <a href="#" id="forgotPassLink" class="text-decoration-none" style="font-size: 0.8rem; color: var(--tt-chili);">Forgot?</a>
+          </div>
+          <div class="tt-input-group">
+            <span class="tt-input-icon"><i class="bi bi-lock"></i></span>
+            <input type="password" class="form-control tt-auth-input tt-auth-input-pass" id="loginPassword" placeholder="Enter your password" required autocomplete="current-password">
+            <button type="button" class="tt-pass-toggle-btn" id="togglePassBtn" aria-label="Toggle password visibility">
+              <i class="bi bi-eye" id="togglePassIcon"></i>
+            </button>
+          </div>
+          <div class="invalid-feedback" id="passwordFeedback">Password is required.</div>
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+          <label class="form-check-label text-muted" for="rememberMe" style="font-size: 0.86rem;">
+            Keep me signed in on this device
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn tt-btn-primary w-100 py-2" id="submitBtn">
+          <span class="spinner-border spinner-border-sm me-2 d-none" id="submitSpinner" role="status" aria-hidden="true"></span>
+          <span id="submitBtnText"><i class="bi bi-box-arrow-in-right me-1"></i> Sign In</span>
+        </button>
+      </form>
+
+      <!-- Footer navigation -->
+      <div class="tt-auth-footer">
+        Don't have an account? <a href="register.html">Create an account</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content tt-modal">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-key-fill text-warning me-2"></i>Reset Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-3 text-muted">Enter your registered email address and we'll send a password reset link to your inbox.</p>
+        <div class="tt-input-group mb-3">
+          <span class="tt-input-icon"><i class="bi bi-envelope"></i></span>
+          <input type="email" class="form-control tt-auth-input" id="forgotEmail" placeholder="name@example.com">
+        </div>
+        <div id="forgotStatus" class="alert alert-info py-2 d-none" style="font-size: 0.85rem;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn tt-btn-primary btn-sm" id="sendResetBtn">Send Reset Link</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const API_BASE = `${window.location.origin}/api`;
+
+  const form = document.getElementById("loginForm");
+  const emailInput = document.getElementById("loginEmail");
+  const passInput = document.getElementById("loginPassword");
+  const togglePassBtn = document.getElementById("togglePassBtn");
+  const togglePassIcon = document.getElementById("togglePassIcon");
+  const submitBtn = document.getElementById("submitBtn");
+  const submitSpinner = document.getElementById("submitSpinner");
+  const submitBtnText = document.getElementById("submitBtnText");
+  const alertBox = document.getElementById("alertBox");
+  const alertIcon = document.getElementById("alertIcon");
+  const alertMessage = document.getElementById("alertMessage");
+  const demoFillBtn = document.getElementById("demoFillBtn");
+
+  // Check if already logged in
+  const existingToken = localStorage.getItem("tt_auth_token");
+  if (existingToken) {
+    // Verify if already authenticated
+    fetch(`${API_BASE}/auth/me`, {
+      headers: { "Authorization": `Bearer ${existingToken}` }
+    }).then(res => {
+      if (res.ok) {
+        window.location.href = "index.html";
+      }
+    }).catch(() => {});
+  }
+
+  // Toggle Password Visibility
+  togglePassBtn.addEventListener("click", () => {
+    if (passInput.type === "password") {
+      passInput.type = "text";
+      togglePassIcon.classList.replace("bi-eye", "bi-eye-slash");
+    } else {
+      passInput.type = "password";
+      togglePassIcon.classList.replace("bi-eye-slash", "bi-eye");
+    }
+  });
+
+  // Demo Autofill Button
+  demoFillBtn.addEventListener("click", () => {
+    emailInput.value = "aman@example.com";
+    passInput.value = "password123";
+    emailInput.classList.remove("is-invalid");
+    passInput.classList.remove("is-invalid");
+    showAlert("Demo credentials loaded! Click Sign In.", "info");
+  });
+
+  // Forgot password modal
+  const forgotModal = new bootstrap.Modal(document.getElementById("forgotModal"));
+  document.getElementById("forgotPassLink").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.getElementById("forgotEmail").value = emailInput.value || "";
+    document.getElementById("forgotStatus").classList.add("d-none");
+    forgotModal.show();
+  });
+
+  document.getElementById("sendResetBtn").addEventListener("click", () => {
+    const fEmail = document.getElementById("forgotEmail").value.trim();
+    const fStatus = document.getElementById("forgotStatus");
+    if (!fEmail || !fEmail.includes("@")) {
+      fStatus.className = "alert alert-danger py-2";
+      fStatus.textContent = "Please enter a valid email address.";
+      fStatus.classList.remove("d-none");
+      return;
+    }
+    fStatus.className = "alert alert-success py-2";
+    fStatus.textContent = `Password reset instructions sent to ${fEmail}.`;
+    fStatus.classList.remove("d-none");
+  });
+
+  function showAlert(msg, type = "danger") {
+    alertBox.className = `alert alert-${type} tt-auth-alert`;
+    alertIcon.innerHTML = type === "danger" 
+      ? '<i class="bi bi-exclamation-triangle-fill text-danger fs-5"></i>' 
+      : type === "success" 
+        ? '<i class="bi bi-check-circle-fill text-success fs-5"></i>' 
+        : '<i class="bi bi-info-circle-fill text-info fs-5"></i>';
+    alertMessage.textContent = msg;
+    alertBox.classList.remove("d-none");
+  }
+
+  function hideAlert() {
+    alertBox.classList.add("d-none");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    hideAlert();
+
+    const email = emailInput.value.trim();
+    const password = passInput.value;
+
+    let valid = true;
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailInput.classList.add("is-invalid");
+      valid = false;
+    } else {
+      emailInput.classList.remove("is-invalid");
+    }
+
+    if (!password) {
+      passInput.classList.add("is-invalid");
+      valid = false;
+    } else {
+      passInput.classList.remove("is-invalid");
+    }
+
+    if (!valid) return;
+
+    // Set loading state
+    submitBtn.disabled = true;
+    submitSpinner.classList.remove("d-none");
+    submitBtnText.textContent = "Signing In...";
+
+    try {
+      const res = await fetch(`${API_BASE}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        showAlert(data.error || "Login failed. Please check your credentials.", "danger");
+        passInput.classList.add("is-invalid");
+        return;
+      }
+
+      // Login success
+      localStorage.setItem("tt_auth_token", data.token);
+      localStorage.setItem("tt_user", JSON.stringify(data.user));
+
+      showAlert("Login successful! Redirecting to Tiffin Trail...", "success");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 700);
+
+    } catch (err) {
+      console.error("Login request error:", err);
+      showAlert("Cannot reach the server. Please try again later.", "danger");
+    } finally {
+      submitBtn.disabled = false;
+      submitSpinner.classList.add("d-none");
+      submitBtnText.innerHTML = '<i class="bi bi-box-arrow-in-right me-1"></i> Sign In';
+    }
+  });
+</script>
+</body>
+</html>
